@@ -1,14 +1,16 @@
+import { IMovie } from "../types/types";
 import { movieDataValidator } from "./validation";
-const validMovie = {
-  id: "1",
-  title: "Inception",
-  description: "A mind-bending thriller",
-  date: "2010-07-16",
-  genre: "Sci-Fi",
-  likes: 100,
-  dislikes: 5,
-  isFavorite: false,
-};
+const validMovie: IMovie = {
+  "id": "1",
+  "title": "Inception",
+  "description": "A thief who steals secrets through dreams is given a chance to erase his past by planting an idea in someone's mind.",
+  "img": "https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg",
+  "date": "2010-07-16",
+  "genre": "Sci-Fi",
+  "likes": 1245,
+  "dislikes": 87,
+  "isFavorite": true
+}
 
 test("returns all movies, when api returns only appropriate movies", () => {
   const movies = [validMovie, validMovie, validMovie]
