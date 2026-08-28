@@ -4,6 +4,7 @@ const MovieSchema = z.object({
     id: z.string(),
     title: z.string(),
     description: z.string(),
+    img: z.string(),
     date: z.string(),
     genre: z.string(),
     likes: z.number(),
