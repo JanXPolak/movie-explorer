@@ -1,4 +1,3 @@
-import useMovies from "@/app/hooks/useMovies";
 import { IMovie } from "@/app/types/types";
 
 interface Props{

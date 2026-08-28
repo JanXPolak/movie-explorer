@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { IMovie } from "../types/types";
 import { API_URL } from "../constants/constants";
+import { movieDataValidator } from "../validation/validation";
 
 const useMovies = () => {
   const [movies, setMovies] = useState<IMovie[]>([]);
@@ -12,11 +13,9 @@ const useMovies = () => {
       setIsLoading(true);
       try {
         const res = await fetch(`${API_URL}/movies`);
-        if(!res.ok){
-            throw new Error(`HTTP ${res.status}`)
-        }
+        if(!res.ok) throw new Error(`HTTP ${res.status}`)
         const json = await res.json()
-        if (!ignore) setMovies(json);
+        if (!ignore) setMovies(movieDataValidator(json));
       } catch {
         if (!ignore) {
           console.error("An error has occured while fetching data.");
