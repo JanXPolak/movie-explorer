@@ -1,22 +1,17 @@
 import { IMovie } from "@/app/types/types";
 import MovieRow from "./MovieRow";
+import getUniqueGenres from "@/app/utils/getUniqueGenres";
 
 interface Props {
   movies: IMovie[];
 }
 
 const ListMovies = ({ movies }: Props) => {
-  function getUniqueGenres(movies: IMovie[]) {
-    const genres: string[] = [];
-    for (const movie of movies) {
-      if (!genres.includes(movie.genre)) {
-        genres.push(movie.genre);
-      }
-    }
-    return genres;
-  }
-
   const genres = getUniqueGenres(movies);
+  const moviesByGenre = genres.map((genre) => ({
+    genre,
+    movies: movies.filter((movie) => movie.genre === genre),
+  }));
 
   if (movies.length === 0) {
     return (
@@ -28,13 +23,10 @@ const ListMovies = ({ movies }: Props) => {
 
   return (
     <div className="flex flex-col gap-8">
-      {genres.map((genre) => (
+      {moviesByGenre.map(({ genre, movies }) => (
         <div key={genre}>
-          <p>{genre}</p>
-          <MovieRow
-            genre={genre}
-            movies={movies.filter((movie) => movie.genre === genre)}
-          />
+          <h2>{genre}</h2>
+          <MovieRow movies={movies} />
         </div>
       ))}
     </div>

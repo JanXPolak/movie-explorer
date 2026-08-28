@@ -2,7 +2,6 @@ import { IMovie } from "@/app/types/types";
 
 interface Props {
   movies: IMovie[];
-  genre: string;
 }
 const MovieRow = ({ movies }: Props) => {
   return (
