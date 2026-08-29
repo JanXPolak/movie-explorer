@@ -6,7 +6,7 @@ interface Props {
   movies: IMovie[];
 }
 
-const SearchResult = ({ searchQuery, movies }: Props) => {
+const SearchResults = ({ searchQuery, movies }: Props) => {
   const filteredMovies = movies.filter((movie) =>
     movie.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -19,4 +19,4 @@ const SearchResult = ({ searchQuery, movies }: Props) => {
   );
 };
 
-export default SearchResult;
+export default SearchResults;
