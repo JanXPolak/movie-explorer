@@ -1,8 +1,8 @@
 import { IMovie } from "../types/types"
 import getUniqueGenres from "./getUniqueGenres"
 
-const createMovie = (genre: string): IMovie => ({
-    id: "1",
+const createMovie = (id: string, genre: string): IMovie => ({
+    id: id,
     title: "Test Movie",
     description: "",
     img: "",
@@ -14,13 +14,13 @@ const createMovie = (genre: string): IMovie => ({
 });
 
 test("returns one genre if array contains only same genres", () => {
-    const movies = [createMovie("Action"), createMovie("Action"), createMovie("Action")]
+    const movies = [createMovie("1", "Action"), createMovie("2", "Action"), createMovie("3", "Action")]
     const result = getUniqueGenres(movies)
     expect(result).toEqual(["Action"])
 })
 
 test("removes duplicate genres from movies", () => {
-    const movies = [createMovie("Action"), createMovie("Action"), createMovie("Comedy"), createMovie("Sci-Fi"), createMovie("Sci-Fi")]
+    const movies = [createMovie("1", "Action"), createMovie("2", "Action"), createMovie("3", "Comedy"), createMovie("4", "Sci-Fi"), createMovie("5", "Sci-Fi")]
     const result = getUniqueGenres(movies)
     expect(result).toEqual(["Action", "Comedy", "Sci-Fi"])
 })
