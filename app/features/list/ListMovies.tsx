@@ -13,14 +13,6 @@ const ListMovies = ({ movies }: Props) => {
     movies: movies.filter((movie) => movie.genre === genre),
   }));
 
-  if (movies.length === 0) {
-    return (
-      <div>
-        <p>There are no movies.</p>
-      </div>
-    );
-  }
-
   return (
     <div className="flex flex-col gap-8">
       {moviesByGenre.map(({ genre, movies }) => (
