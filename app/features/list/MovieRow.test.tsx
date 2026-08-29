@@ -32,7 +32,7 @@ test("renders multiple movies", () => {
   const movies = [
     createMovie("Inception", "inception.jpg"),
     createMovie("Interstellar", "interstellar.jpg"),
-    createMovie("Spider-Man", "interstellar.jpg"),
+    createMovie("Spider-Man", "spider-man.jpg"),
   ];
   render(<MovieRow movies={movies} />);
   expect(screen.getByText(/inception/i)).toBeInTheDocument();
@@ -40,5 +40,12 @@ test("renders multiple movies", () => {
   expect(screen.getByText(/spider-man/i)).toBeInTheDocument();
 
   const images = screen.getAllByRole("img");
-  expect(images).toHaveLength(3);
+  expect(images).toHaveLength(movies.length);
+});
+
+test("renders nothing when movies list is empty", () => {
+  const movies: IMovie[] = [];
+  render(<MovieRow movies={movies} />);
+  const images = screen.queryAllByRole("img");
+  expect(images).toHaveLength(0);
 });
