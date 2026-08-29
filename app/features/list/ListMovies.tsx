@@ -1,7 +1,6 @@
 import { IMovie } from "@/app/types/types";
 import MovieRow from "./MovieRow";
 import getUniqueGenres from "@/app/utils/getUniqueGenres";
-getUniqueGenres
 
 interface Props {
   movies: IMovie[];
