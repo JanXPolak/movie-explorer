@@ -1,14 +1,10 @@
 "use client";
-import ListMovies from "./features/list/ListMovies";
-import useMovies from "./hooks/useMovies";
+import MoviesPage from "./features/movies/MoviesPage";
 
 const App = () => {
-  const { movies, isLoading, isError } = useMovies();
-  if (isLoading) return <p>Loading data...</p>;
-  if (isError) return <p>An error has occured while fetching data.</p>;
   return (
     <div>
-      <ListMovies movies={movies}/>
+      <MoviesPage/>
     </div>
   );
 };
