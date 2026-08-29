@@ -14,20 +14,7 @@ const MoviesPage = () => {
   const isSearchQueryEmpty = searchQuery === "";
   if (isLoading) return <p>Loading data...</p>;
   if (isError) return <p>An error has occured while fetching data.</p>;
-  if (movies.length === 0) {
-    return (
-      <div>
-        <p>There are no movies.</p>
-      </div>
-    );
-  }
-  if (selectedMovie) {
-    return (
-      <MovieDetailsContext value={{ selectedMovie, setSelectedMovie }}>
-        <MovieDetailsModal movie={selectedMovie} />
-      </MovieDetailsContext>
-    );
-  }
+  if (movies.length === 0) return <p>There are no movies.</p>;
   return (
     <div>
       <MovieDetailsContext value={{ selectedMovie, setSelectedMovie }}>
@@ -40,6 +27,7 @@ const MoviesPage = () => {
         ) : (
           <SearchResults searchQuery={searchQuery} movies={movies} />
         )}
+        {selectedMovie && <MovieDetailsModal movie={selectedMovie} />}
       </MovieDetailsContext>
     </div>
   );
