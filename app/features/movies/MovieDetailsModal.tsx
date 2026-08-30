@@ -14,7 +14,6 @@ const MovieDetailsModal = ({ movie }: Props) => {
     <div className="fixed inset-0 z-50 min-h-screen overflow-y-auto bg-black text-white">
       <img
         src={movie.img}
-        alt=""
         className="fixed inset-0 h-full w-full object-cover opacity-30"
       />
 
