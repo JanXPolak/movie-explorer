@@ -5,7 +5,7 @@ import { movieDataValidator } from "../validation/validation";
 
 const useMovies = () => {
   const [movies, setMovies] = useState<IMovie[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   useEffect(() => {
     let ignore = false;
